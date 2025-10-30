@@ -1,13 +1,12 @@
 package lotto.domain;
 
 import lotto.exception.ErrorMessage;
-import net.bytebuddy.pool.TypePool;
 
 public class Payment {
     private static final int LOTTO_PRICE = 1000;
     private final int amount;
 
-    Payment(String input){
+    public Payment(String input){
         validate(input);
         this.amount = Integer.parseInt(input);
     }
