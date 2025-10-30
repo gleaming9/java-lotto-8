@@ -55,7 +55,7 @@ public class WinningNumber {
     private void validateDuplication(List<Integer> numbers){
         Set<Integer> uniqueNumbers = new HashSet<>(numbers);
         if(uniqueNumbers.size() != numbers.size()){
-            throw new IllegalArgumentException(ErrorMessage.DUPICATE_WINNING_NUMBER.getMessage());
+            throw new IllegalArgumentException(ErrorMessage.DUPLICATE_WINNING_NUMBER.getMessage());
         }
     }
 
