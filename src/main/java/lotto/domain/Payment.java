@@ -1,0 +1,37 @@
+package lotto.domain;
+
+import lotto.exception.ErrorMessage;
+import net.bytebuddy.pool.TypePool;
+
+public class Payment {
+    private static final int LOTTO_PRICE = 1000;
+    private final int amount;
+
+    Payment(String input){
+        validate(input);
+        this.amount = Integer.parseInt(input);
+    }
+
+    private void validate(String input){
+        int num = parseNumericInput(input);
+        validatePaymentRules(num);
+    }
+
+    private int parseNumericInput(String input){
+        try{
+            return Integer.parseInt(input);
+        }
+        catch(NumberFormatException e) {
+            throw new IllegalArgumentException(ErrorMessage.INVALID_PAYMENT_FORMAT.getMessage());
+        }
+    }
+
+    private void validatePaymentRules(int num){
+        if(num < LOTTO_PRICE) {
+            throw new IllegalArgumentException(ErrorMessage.INSUFFICIENT_PAYMENT.getMessage());
+        }
+        if(num % LOTTO_PRICE != 0) {
+            throw new IllegalArgumentException(ErrorMessage.INVALID_PAYMENT_UNIT.getMessage());
+        }
+    }
+}
