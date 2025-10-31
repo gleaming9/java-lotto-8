@@ -6,10 +6,7 @@ import java.util.*;
 
 public class WinningNumber {
     private static final String BASE_DELIMITER = "[,]";
-    private static final int LOTTO_NUMBER_COUNT = 6;
-    private static final int MIN_LOTTO_NUMBER = 1;
-    private static final int MAX_LOTTO_NUMBER = 45;
-    private List<Integer> numbers;
+    private final List<Integer> numbers;
 
     public WinningNumber(String input){
         this.numbers = validate(input);
@@ -26,7 +23,7 @@ public class WinningNumber {
 
     private List<String> parseInput(String input){
         List<String> numbers = Arrays.asList(input.split(BASE_DELIMITER));
-        if(numbers.size() != LOTTO_NUMBER_COUNT) {
+        if(numbers.size() != LottoRule.LOTTO_NUMBER_COUNT.getValue()) {
             throw new IllegalArgumentException(ErrorMessage.INVALID_WINNING_NUMBER_SIZE.getMessage());
         }
         return numbers;
@@ -48,7 +45,7 @@ public class WinningNumber {
     }
 
     private void validateRange(int num){
-        if(num < MIN_LOTTO_NUMBER || num > MAX_LOTTO_NUMBER){
+        if(num < LottoRule.MIN_LOTTO_NUMBER.getValue()|| num > LottoRule.MAX_LOTTO_NUMBER.getValue()){
             throw new IllegalArgumentException(ErrorMessage.INVALID_WINNING_NUMBER_RANGE.getMessage());
         }
     }

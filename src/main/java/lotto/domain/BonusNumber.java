@@ -3,9 +3,6 @@ package lotto.domain;
 import lotto.exception.ErrorMessage;
 
 public class BonusNumber {
-    private static final int MIN_LOTTO_NUMBER = 1;
-    private static final int MAX_LOTTO_NUMBER = 45;
-
     private final int number;
 
     public BonusNumber(String input, WinningNumber winningNumber) {
@@ -29,7 +26,7 @@ public class BonusNumber {
     }
 
     private void validateRange(int num) {
-        if (num < MIN_LOTTO_NUMBER || num > MAX_LOTTO_NUMBER) {
+        if (num < LottoRule.MIN_LOTTO_NUMBER.getValue() || num > LottoRule.MAX_LOTTO_NUMBER.getValue()) {
             throw new IllegalArgumentException(ErrorMessage.INVALID_BONUS_NUMBER_RANGE.getMessage());
         }
     }

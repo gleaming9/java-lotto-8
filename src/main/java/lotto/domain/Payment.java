@@ -3,7 +3,6 @@ package lotto.domain;
 import lotto.exception.ErrorMessage;
 
 public class Payment {
-    private static final int LOTTO_PRICE = 1000;
     private final int amount;
 
     public Payment(String input){
@@ -26,10 +25,10 @@ public class Payment {
     }
 
     private void validatePaymentRules(int num){
-        if(num < LOTTO_PRICE) {
+        if(num < LottoRule.LOTTO_PRICE.getValue()) {
             throw new IllegalArgumentException(ErrorMessage.INSUFFICIENT_PAYMENT.getMessage());
         }
-        if(num % LOTTO_PRICE != 0) {
+        if(num % LottoRule.LOTTO_PRICE.getValue() != 0) {
             throw new IllegalArgumentException(ErrorMessage.INVALID_PAYMENT_UNIT.getMessage());
         }
     }
