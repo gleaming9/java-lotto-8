@@ -7,18 +7,18 @@ public class Payment {
     private final int amount;
 
     public Payment(String input){
-        validate(input);
-        this.amount = Integer.parseInt(input);
+        this.amount = validate(input);
     }
 
-    private void validate(String input){
+    private int validate(String input){
         int num = parseNumericInput(input);
         validatePaymentRules(num);
+        return num;
     }
 
     private int parseNumericInput(String input){
         try{
-            return Integer.parseInt(input);
+            return Integer.parseInt(input.trim());
         }
         catch(NumberFormatException e) {
             throw new IllegalArgumentException(ErrorMessage.INVALID_PAYMENT_FORMAT.getMessage());
