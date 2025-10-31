@@ -13,6 +13,7 @@ public class WinningNumber {
 
     public WinningNumber(String input){
         this.numbers = validate(input);
+        Collections.sort(numbers);
     }
 
     private List<Integer> validate(String input){
