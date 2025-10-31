@@ -33,4 +33,8 @@ public class Payment {
             throw new IllegalArgumentException(ErrorMessage.INVALID_PAYMENT_UNIT.getMessage());
         }
     }
+
+    public int getAmount(){
+        return amount;
+    }
 }
