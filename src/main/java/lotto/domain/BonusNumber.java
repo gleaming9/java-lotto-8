@@ -2,10 +2,6 @@ package lotto.domain;
 
 import lotto.exception.ErrorMessage;
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-
 public class BonusNumber {
     private static final int MIN_LOTTO_NUMBER = 1;
     private static final int MAX_LOTTO_NUMBER = 45;
