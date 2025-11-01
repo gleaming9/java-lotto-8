@@ -4,9 +4,11 @@ import lotto.exception.ErrorMessage;
 
 public class Payment {
     private final int amount;
+    private final int lottoCount;
 
     public Payment(String input){
         this.amount = validate(input);
+        this.lottoCount = calculateLottoCount();
     }
 
     private int validate(String input){
@@ -33,7 +35,15 @@ public class Payment {
         }
     }
 
+    private int calculateLottoCount(){
+        return amount/LottoRule.LOTTO_PRICE.getValue();
+    }
+
     public int getAmount(){
         return amount;
+    }
+
+    public int getLottoCount(){
+        return lottoCount;
     }
 }
