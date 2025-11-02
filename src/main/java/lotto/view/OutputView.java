@@ -19,4 +19,8 @@ public class OutputView {
             System.out.println(lottoString);
         }
     }
+
+    public static void printError(String message){
+        System.out.println(message);
+    }
 }
