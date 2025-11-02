@@ -10,8 +10,7 @@ import java.util.List;
 
 public class LottoIssuingService {
 
-    public List<Lotto> issueLotto(String paymentInput) {
-        Payment payment = new Payment(paymentInput);
+    public List<Lotto> issueLotto(Payment payment) {
         int lottoCount = payment.getLottoCount();
 
         List<Lotto> lottos = new ArrayList<Lotto>();
