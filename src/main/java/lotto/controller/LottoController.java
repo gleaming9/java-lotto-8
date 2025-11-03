@@ -11,9 +11,17 @@ import java.util.List;
 
 public class LottoController {
 
-    LottoIssuingService lottoIssuingService = new LottoIssuingService();
-    LottoCalculateService lottoCalculateService = new LottoCalculateService();
-    LottoInputService lottoInputService = new LottoInputService();
+    private final LottoIssuingService lottoIssuingService;
+    private final LottoCalculateService lottoCalculateService;
+    private final LottoInputService lottoInputService;
+
+    public LottoController(LottoIssuingService lottoIssuingService,
+                           LottoCalculateService lottoCalculateService,
+                           LottoInputService lottoInputService){
+        this.lottoIssuingService = lottoIssuingService;
+        this.lottoCalculateService = lottoCalculateService;
+        this.lottoInputService = lottoInputService;
+    }
 
     public void run(){
         Payment payment = createPayment();
