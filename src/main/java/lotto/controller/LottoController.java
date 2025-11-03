@@ -17,13 +17,13 @@ public class LottoController {
 
     public LottoController(LottoIssuingService lottoIssuingService,
                            LottoCalculateService lottoCalculateService,
-                           LottoInputService lottoInputService){
+                           LottoInputService lottoInputService) {
         this.lottoIssuingService = lottoIssuingService;
         this.lottoCalculateService = lottoCalculateService;
         this.lottoInputService = lottoInputService;
     }
 
-    public void run(){
+    public void run() {
         Payment payment = createPayment();
         List<Lotto> lottos = lottoIssuingService.issueLotto(payment);
         OutputView.printLotto(lottos);
@@ -35,37 +35,34 @@ public class LottoController {
         OutputView.printResult(lottoResult);
     }
 
-    private Payment createPayment(){
-        while(true){
-            try{
+    private Payment createPayment() {
+        while (true) {
+            try {
                 String input = InputView.getPayment();
                 return lottoInputService.createPayment(input);
-            }
-            catch(IllegalArgumentException e){
+            } catch (IllegalArgumentException e) {
                 OutputView.printError(e.getMessage());
             }
         }
     }
 
-    private WinningNumber createWinningNumber(){
-        while(true){
-            try{
+    private WinningNumber createWinningNumber() {
+        while (true) {
+            try {
                 String input = InputView.getWinningNumber();
                 return lottoInputService.createWinningNumber(input);
-            }
-            catch(IllegalArgumentException e){
+            } catch (IllegalArgumentException e) {
                 OutputView.printError(e.getMessage());
             }
         }
     }
 
-    private BonusNumber createBonusNumber(WinningNumber winningNumber){
-        while(true){
-            try{
+    private BonusNumber createBonusNumber(WinningNumber winningNumber) {
+        while (true) {
+            try {
                 String input = InputView.getBonusNumber();
                 return lottoInputService.createBonusNumber(input, winningNumber);
-            }
-            catch(IllegalArgumentException e){
+            } catch (IllegalArgumentException e) {
                 OutputView.printError(e.getMessage());
             }
         }

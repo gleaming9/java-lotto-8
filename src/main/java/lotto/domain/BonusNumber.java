@@ -32,12 +32,12 @@ public class BonusNumber {
     }
 
     private void validateDuplication(int num, WinningNumber winningNumber) {
-        if(winningNumber.getNumbers().contains(num)){
+        if (winningNumber.getNumbers().contains(num)) {
             throw new IllegalArgumentException(ErrorMessage.DUPLICATE_BONUS_NUMBER.getMessage());
         }
     }
 
-    public int getNumber(){
+    public int getNumber() {
         return number;
     }
 }

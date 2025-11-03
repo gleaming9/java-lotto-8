@@ -8,11 +8,11 @@ public enum LottoRule {
 
     private final int value;
 
-    LottoRule(int value){
+    LottoRule(int value) {
         this.value = value;
     }
 
-    public int getValue(){
+    public int getValue() {
         return value;
     }
 }

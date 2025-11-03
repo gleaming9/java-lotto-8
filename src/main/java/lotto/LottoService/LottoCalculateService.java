@@ -26,10 +26,10 @@ public class LottoCalculateService {
         return new LottoResult(rankCounts, profitRate);
     }
 
-    private Map<LottoRank, Integer> initializeRankCounts(){
+    private Map<LottoRank, Integer> initializeRankCounts() {
         Map<LottoRank, Integer> rankCounts = new EnumMap<>(LottoRank.class);
-        for(LottoRank rank : LottoRank.values()){
-            rankCounts.put(rank,0);
+        for (LottoRank rank : LottoRank.values()) {
+            rankCounts.put(rank, 0);
         }
         return rankCounts;
     }
@@ -44,9 +44,9 @@ public class LottoCalculateService {
         return lotto.getNumbers().contains(bonusNumber.getNumber());
     }
 
-    private double calculateProfitRate(Map<LottoRank, Integer> rankCounts, Payment payment){
+    private double calculateProfitRate(Map<LottoRank, Integer> rankCounts, Payment payment) {
         long sum = 0;
-        for(LottoRank key : rankCounts.keySet()){
+        for (LottoRank key : rankCounts.keySet()) {
             long prizeMoney = key.getPriceMoney();
             int count = rankCounts.get(key);
 

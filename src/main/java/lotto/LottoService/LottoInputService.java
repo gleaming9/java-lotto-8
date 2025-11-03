@@ -5,15 +5,15 @@ import lotto.domain.Payment;
 import lotto.domain.WinningNumber;
 
 public class LottoInputService {
-    public Payment createPayment(String input){
+    public Payment createPayment(String input) {
         return new Payment(input);
     }
 
-    public WinningNumber createWinningNumber(String input){
+    public WinningNumber createWinningNumber(String input) {
         return new WinningNumber(input);
     }
 
-    public BonusNumber createBonusNumber(String input, WinningNumber winningNumber){
+    public BonusNumber createBonusNumber(String input, WinningNumber winningNumber) {
         return new BonusNumber(input, winningNumber);
     }
 }

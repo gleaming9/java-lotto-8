@@ -14,35 +14,35 @@ public class OutputView {
     private static final String STATISTIC_RANK_FORMAT = "%s - %d개\n";
     private static final String PROFIT_RATE_FORMAT = "총 수익률은 %.1f%%입니다.\n";
 
-    public static void printLotto(List<Lotto> lottos){
-        System.out.printf(PAYMENT_COUNT_FORMAT,lottos.size());
+    public static void printLotto(List<Lotto> lottos) {
+        System.out.printf(PAYMENT_COUNT_FORMAT, lottos.size());
 
-        for(Lotto lotto : lottos){
+        for (Lotto lotto : lottos) {
             String lottoString = lotto.getNumbers().stream()
                     .map(String::valueOf)
-                    .collect(Collectors.joining(", ","[","]"));
+                    .collect(Collectors.joining(", ", "[", "]"));
 
             System.out.println(lottoString);
         }
     }
 
-    public static void printResult(LottoResult lottoResult){
+    public static void printResult(LottoResult lottoResult) {
         System.out.println(STATISTIC_HEADER);
         System.out.println(STATISTIC_DIVIDER);
 
-        for(LottoRank rank : LottoRank.values()){
-            if(rank == LottoRank.MISS){
+        for (LottoRank rank : LottoRank.values()) {
+            if (rank == LottoRank.MISS) {
                 continue;
             }
 
             String description = rank.getDescription();
             int count = lottoResult.getRankCounts().get(rank);
-            System.out.printf(STATISTIC_RANK_FORMAT,description,count);
+            System.out.printf(STATISTIC_RANK_FORMAT, description, count);
         }
-        System.out.printf(PROFIT_RATE_FORMAT,lottoResult.getProfitRate());
+        System.out.printf(PROFIT_RATE_FORMAT, lottoResult.getProfitRate());
     }
 
-    public static void printError(String message){
+    public static void printError(String message) {
         System.out.println(message);
     }
 }

@@ -6,7 +6,7 @@ public class LottoResult {
     private final Map<LottoRank, Integer> rankCounts;
     private final double profitRate;
 
-    public LottoResult(Map<LottoRank, Integer> rankCounts, double profitRate){
+    public LottoResult(Map<LottoRank, Integer> rankCounts, double profitRate) {
         this.rankCounts = rankCounts;
         this.profitRate = profitRate;
     }
