@@ -3,10 +3,7 @@ package lotto.controller;
 import lotto.LottoService.LottoCalculateService;
 import lotto.LottoService.LottoInputService;
 import lotto.LottoService.LottoIssuingService;
-import lotto.domain.BonusNumber;
-import lotto.domain.Lotto;
-import lotto.domain.Payment;
-import lotto.domain.WinningNumber;
+import lotto.domain.*;
 import lotto.view.InputView;
 import lotto.view.OutputView;
 
@@ -25,6 +22,9 @@ public class LottoController {
 
         WinningNumber winningNumber = createWinningNumber();
         BonusNumber bonusNumber = createBonusNumber(winningNumber);
+        LottoResult lottoResult = lottoCalculateService.calculateStatistic(lottos, winningNumber, bonusNumber, payment);
+
+        OutputView.printResult(lottoResult);
     }
 
     private Payment createPayment(){
