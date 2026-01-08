@@ -15,8 +15,9 @@ public class WinningNumberParser {
 
     private List<Integer> parseNumberList(String input) {
         String[] numberStrings = input.split(BASE_DELIMITER);
-        List<Integer> winningNumberList = new ArrayList<>();
+        validateCount(numberStrings.length);
 
+        List<Integer> winningNumberList = new ArrayList<>();
         for (String numStr : numberStrings) {
             int num = parseNumber(numStr);
             winningNumberList.add(num);
@@ -47,6 +48,12 @@ public class WinningNumberParser {
         Set<Integer> myset = new HashSet<>(numbers);
         if(myset.size() != numbers.size()){
             throw new IllegalArgumentException(ErrorMessage.DUPLICATE_WINNING_NUMBER.getMessage());
+        }
+    }
+
+    private void validateCount(int size){
+        if(size != 6){
+            throw new IllegalArgumentException(ErrorMessage.INVALID_WINNING_NUMBER_COUNT.getMessage());
         }
     }
 }
