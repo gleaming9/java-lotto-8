@@ -1,23 +1,33 @@
 package lotto.controller;
 
-import lotto.domain.BonusNumber;
-import lotto.domain.Payment;
-import lotto.domain.WinningNumber;
+import lotto.domain.*;
 import lotto.parser.BonusNumberParser;
 import lotto.parser.PaymentParser;
 import lotto.parser.WinningNumberParser;
+import lotto.service.LottoCalcService;
+import lotto.service.LottoCreateService;
 import lotto.view.InputView;
 import lotto.view.OutputView;
+
+import java.util.List;
 
 public class LottoController {
     PaymentParser paymentParser = new PaymentParser();
     WinningNumberParser winningNumberParser = new WinningNumberParser();
     BonusNumberParser bonusNumberParser = new BonusNumberParser();
+    LottoCreateService lottoCreateService = new LottoCreateService();
+    LottoCalcService lottoCalcService = new LottoCalcService();
 
     public void run() {
         Payment payment = setUpPayment();
+        List<Lotto> lottos = lottoCreateService.issueLottos(payment);
+        OutputView.printLotto(lottos);
+
         WinningNumber winningNumber = setUpWinningNumber();
         BonusNumber bonusNumber = setUpBonusNumber(winningNumber);
+
+        LottoResult lottoResult = lottoCalcService.calculateResult(payment,lottos,winningNumber,bonusNumber);
+        OutputView.printResult(lottoResult);
     }
 
     private Payment setUpPayment() {
